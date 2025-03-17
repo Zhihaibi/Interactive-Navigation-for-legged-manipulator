@@ -22,8 +22,8 @@ We deploy our method on a legged manipulator in a 6.8 m × 8 m cluttered indoor 
 
 ## Implementation
 - [✔] Training code
-- [x] Planner code 
-- [x] Tutorial
+- [ ] Planner code 
+- [ ] Tutorial
 
 ## Authors
 
