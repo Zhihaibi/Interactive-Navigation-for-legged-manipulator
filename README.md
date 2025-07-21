@@ -1,5 +1,7 @@
 # Interactive-Navigation-with-Learned-Arm-pushing-Controller
 
+[![Project Page](https://img.shields.io/badge/Project%20Page-6DE1D2?style=for-the-badge&logo=safari&labelColor=555555)](https://zhihaibi.github.io/interactive-push.github.io/)
+[![arXiv](https://img.shields.io/badge/arXiv-F75A5A?style=for-the-badge&logo=arxiv&labelColor=555555)](https://arxiv.org/pdf/2503.01474)
 
 <p align ="center">
 <img src="./Images/fig1.png" width=90%>
