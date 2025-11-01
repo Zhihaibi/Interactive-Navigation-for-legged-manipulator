@@ -24,11 +24,31 @@ Interactive navigation is crucial in scenarios where proactively interacting wit
 We deploy our method on a legged manipulator in a 6.8 m × 8 m cluttered indoor environment.
 </font>
 
+## Quick Start For the Simple Case
+1. Create a new python virtual env with python 3.6, 3.7 or 3.8 (3.8 recommended)
+2.  Clone this repository
+3. Install pytorch 1.10 with cuda-11.3: (change according to your cuda version)
+    - `pip3 install torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio==0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html`
+4. Install Isaac Gym
+   - `cd src/isaacgym/python && pip install -e .`
+   - Try running an example `cd examples && python 1080_balls_of_solitude.py`
+   - For troubleshooting check docs `isaacgym/docs/index.html`)
+5. Install rsl_rl (PPO implementation)
+   -  `cd src/rsl_rl && git checkout v1.0.2 && pip install -e .` 
+6. Install legged_gym
+  
+   - `cd src && pip install -e .`
+7. Training:
+   
+     ```python src/legged_gym/scripts/train.py --task=z1```
+
+
 
 ## Implementation
 - [√] Training code
-- [ ] Planner code 
 - [ ] Tutorial
+- [ ] Planner code: Modified hybrid A* 
+
 
 ## Authors
 
