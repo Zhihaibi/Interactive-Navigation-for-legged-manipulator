@@ -24,7 +24,7 @@ Interactive navigation is crucial in scenarios where proactively interacting wit
 We deploy our method on a legged manipulator in a 6.8 m × 8 m cluttered indoor environment.
 </font>
 
-## Quick Start For the Simple Case
+## Quick Start For the Arm Pushing Policy
 1. Create a new python virtual env with python 3.6, 3.7 or 3.8 (3.8 recommended)
 2.  Clone this repository
 3. Install pytorch 1.10 with cuda-11.3: (change according to your cuda version)
@@ -43,11 +43,48 @@ We deploy our method on a legged manipulator in a 6.8 m × 8 m cluttered indoor 
      ```python src/legged_gym/scripts/train.py --task=z1```
 
 
+## Low-Level WBC Policy for B2Z1
+The low-level traing code is modified from [Visual WBC](https://wholebody-b1.github.io/).
+
+### Code structure
+- `legged_gym/envs` contains environment-related codes.
+- `legged_gym/scripts` contains train and test scripts.
+
+### Train
+
+The environment related code is `legged_gym/legged_gym/envs/manip_loco/manip_loco.py`, and the related config for b2z1 hardware is in `b2z1_config.py`.
+
+```bash
+cd legged_gym/scripts
+
+python train.py --headless --exptid kp_350_kd_5 --proj_name b2z1-low --task b2z1 --sim_device cuda:0 --rl_device cuda:0 --observe_gait_commands
+```
+- `--debug` disables wandb and set a small number of envs for faster execution.
+- `--headless` disables rendering, typically used when you train model.
+- `--proj_name` the folder containing all your logs and wandb project name. `manip-loco` is default.
+- `--observe_gait_commands` is for tracking specific gait commands and learning the trotting behavior.
+
+Check `legged_gym/legged_gym/utils/helpers.py` for all command line args.
+
+### Play
+Only need to specify `--exptid`. The parser will automatically find corresponding runs.
+```bash
+cd legged_gym/scripts
+
+python play.py --exptid b2_z1_V1 --task b2z1 --proj_name b2z1-low --checkpoint 78000 --observe_gait_commands
+```
+
+Use `--sim_device cpu --rl_device cpu` in case not enough GPU memory.
+
+
+
+## Planner
+Modify from [hybrid A*](https://github.com/Zhihaibi/HybridAstar-Annotation).
+
 
 ## Implementation
 - [√] Training code
-- [ ] Tutorial
-- [ ] Planner code: Modified hybrid A* 
+- [√] Tutorial
 
 
 ## Authors
@@ -55,3 +92,4 @@ We deploy our method on a legged manipulator in a 6.8 m × 8 m cluttered indoor 
 - [@Zhihai Bi](zbi217@connect.hkust-gz.edu.cn)
 
 Feel free to contact me if you have any questions regarding the implementation of the algorithm.
+
